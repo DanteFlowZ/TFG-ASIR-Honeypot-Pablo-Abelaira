@@ -4,41 +4,47 @@ El presente apartado constituye una ampliación técnica centrada en el análisi
 
 Este análisis no solo permite evaluar la eficacia de la infraestructura de detección, sino también documentar con precisión los vectores de ataque, las tácticas empleadas por los atacantes, y cómo un sistema de registro y monitoreo bien configurado puede aportar visibilidad y trazabilidad a los incidentes.
 
+--- 
+
 ### 7.2 Objetivos
 
-Documentar el uso detallado del dashboard de Kibana para el análisis forense de incidentes.
+- **Documentar el uso detallado del dashboard de Kibana para el análisis forense de incidentes.**
 
-Estudiar la relación entre tipos de ataques y las huellas que dejan en los registros.
+- **Estudiar la relación entre tipos de ataques y las huellas que dejan en los registros.**
 
-Detectar patrones comunes en los ataques simulados.
+- **Detectar patrones comunes en los ataques simulados.**
 
-Evaluar la utilidad del honeypot para recopilar inteligencia de amenazas.
+- **valuar la utilidad del honeypot para recopilar inteligencia de amenazas.**
+
+---
 
 ### 7.3 Metodología de análisis
 
 Para lograr una visión clara de cada incidente, se aplicó una metodología basada en las siguientes fases:
 
-Acceso al entorno gráfico de Kibana: A través del navegador, se accedió al dashboard integrado que ofrece T-Pot, utilizando la IP pública asignada por VMware y los puertos habilitados por las reglas de red.
+- **Acceso al entorno gráfico de Kibana: A través del navegador, se accedió al dashboard integrado que ofrece T-Pot, utilizando la IP pública asignada por VMware y los puertos habilitados por las reglas de red.**
 
-Selección del índice correspondiente: En Kibana, se seleccionaron los índices del tipo logstash-* y honeypot-*, que agrupan los datos de distintos honeypots activos como Cowrie, Dionaea, entre otros.
+- **Selección del índice correspondiente: En Kibana, se seleccionaron los índices del tipo logstash- y honeypot-*, que agrupan los datos de distintos honeypots activos como Cowrie, Dionaea, entre otros.**
 
-Ajuste temporal preciso: Para analizar con precisión cada ataque, se configuraron filtros temporales exactos desde la interfaz de Kibana, alineados con la hora de ejecución de los ataques simulados.
+- **Ajuste temporal preciso: Para analizar con precisión cada ataque, se configuraron filtros temporales exactos desde la interfaz de Kibana, alineados con la hora de ejecución de los ataques simulados.**
 
-Exploración de visualizaciones: Se utilizaron dashboards preconfigurados y personalizados para observar los siguientes elementos:
+- **Exploración de visualizaciones: Se utilizaron dashboards preconfigurados y personalizados para observar los siguientes elementos:**
 
-Frecuencia de eventos
+- **Frecuencia de eventos**
 
-Actividad por protocolo
+- **Actividad por protocolo**
 
-Origen geográfico de las IPs
+- **Origen geográfico de las IPs**
 
-Captura de credenciales
+- **Captura de credenciales**
 
-Cronología de eventos
+- **Cronología de eventos**
 
-Extracción de información técnica: Se documentaron logs específicos, identificadores de sesiones, y comandos ejecutados cuando fueron registrados por honeypots de tipo Cowrie.
+- **Extracción de información técnica: Se documentaron logs específicos, identificadores de sesiones, y comandos ejecutados cuando fueron registrados por honeypots de tipo Cowrie.**
 
-Captura de evidencias: Se tomaron capturas de pantalla para ilustrar las fases del ataque y las respuestas generadas por el sistema.
+- **Captura de evidencias: Se tomaron capturas de pantalla para ilustrar las fases del ataque y las respuestas generadas por el sistema.**
+
+---
 
 ### 7.4 Visualizaciones utilizadas
 
@@ -72,9 +78,11 @@ GeoIP Map
 
 Mapa geográfico de los orígenes de los ataques en tiempo real.
 
+---
+
 ### 7.5 Análisis por tipo de ataque
 
-7.5.1 Escaneo de puertos
+- *7.5.1 Escaneo de puertos*
 
 Herramienta utilizada: nmap -sS -p 1-65535 192.168.159.130
 
@@ -86,9 +94,8 @@ IP origen: 192.168.159.131
 
 Correlación: El escaneo activó respuestas en varios honeypots simultáneamente (Cowrie, Glastopf y Dionaea), lo que demuestra la efectividad del entorno para registrar actividad multivectorial.
 
-Captura: img/07_portscan.png
 
-7.5.2 Ataques de fuerza bruta por SSH
+- *7.5.2 Ataques de fuerza bruta por SSH*
 
 Herramienta utilizada: hydra -l root -P passwords.txt ssh://192.168.159.130
 
@@ -100,9 +107,8 @@ Credenciales capturadas: Se obtuvieron pares como admin:123456, root:toor y user
 
 Impacto: A pesar de que Cowrie simula un entorno operativo real, todos los comandos fueron registrados y la sesión fue interceptada, evidenciando el valor del honeypot como sistema de alerta temprana.
 
-Captura: img/07_ssh_attempts.png
 
-7.5.3 Acceso a servicios HTTP vulnerables
+- *7.5.3 Acceso a servicios HTTP vulnerables*
 
 Herramienta utilizada: Navegación manual y herramientas como dirb, nikto.
 
@@ -114,7 +120,9 @@ Observaciones: La visualización HTTP Request Logs mostró actividad irregular, 
 
 Honeypot involucrado: Glastopf y Conpot.
 
-Captura: img/07_http_requests.png
+
+
+---
 
 ### 7.6 Interpretación de resultados
 
@@ -129,6 +137,8 @@ Se logró detectar la mayoría de los vectores comunes usados por atacantes real
 El uso de honeypots con diferentes perfiles (SSH, HTTP, SCADA, etc.) permite una visión holística de las amenazas.
 
 Las capturas de credenciales suponen una fuente valiosa de inteligencia, sobre todo para comprender cómo se comportan los scripts automatizados.
+
+---
 
 ### 7.7 Conclusiones parciales
 
