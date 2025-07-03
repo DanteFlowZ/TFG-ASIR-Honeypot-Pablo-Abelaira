@@ -33,10 +33,13 @@ El propósito de esta guía es documentar el proceso de simulación de ataques d
 
 ```bash
 nmap -sS -p- -T4 192.168.50.153
+```
 
 ### 2. Ataque por fuerza bruta SSH con Hydra
 
+```bash
 hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://192.168.50.153
+```
 
 Objetivo: Descubrir contraseñas por fuerza bruta.
 
@@ -44,23 +47,33 @@ Resultado esperado: Honeypots SSH como Cowrie registran la IP, credenciales prob
 
 ### 3. Escaneo de vulnerabilidades web con Nikto
 
+```bash
 nikto -host http://192.168.50.153
+```
+
 Objetivo: Detectar configuraciones web inseguras o directorios ocultos.
 
 Resultado esperado: Honeypot web (como Dionaea) registra peticiones HTTP anómalas y genera alertas en Kibana.
 
 ### 4. Peticiones maliciosas simples con Curl
+
+```bash
 curl -X GET http://192.168.50.153/admin
 curl -X POST http://192.168.50.153/login --data "user=admin&pass=1234"
+```
+
 Objetivo: Simular intentos de acceso no autorizados a interfaces sensibles.
 
 Resultado esperado: Las herramientas de logging capturan intentos y cabeceras HTTP.
 
 5. Uso de Metasploit para explotación
+
+```bash
 msfconsole
 use auxiliary/scanner/ftp/ftp_version
 set RHOSTS 192.168.50.153
 run
+```
 
 Objetivo: Simular reconocimiento con módulos automatizados.
 
@@ -68,6 +81,7 @@ Resultado esperado: Registro detallado del fingerprinting y alertas de comportam
 
 Visualización y análisis
 Una vez ejecutados los ataques, accedemos al panel de T-Pot en Kibana:
+
 
 URL: https://192.168.50.153:64297
 
