@@ -1,10 +1,10 @@
-7.1 Introducción
+### 7.1 Introducción
 
 El presente apartado constituye una ampliación técnica centrada en el análisis exhaustivo de los registros generados por los ataques simulados hacia el entorno de honeypot proporcionado por T-Pot. Utilizando el dashboard de Kibana, se examinan en profundidad los eventos registrados, las IPs de origen, los protocolos afectados, y las credenciales capturadas. El propósito es demostrar cómo una organización puede utilizar herramientas de visualización para detectar, identificar y responder ante comportamientos maliciosos dentro de su red.
 
 Este análisis no solo permite evaluar la eficacia de la infraestructura de detección, sino también documentar con precisión los vectores de ataque, las tácticas empleadas por los atacantes, y cómo un sistema de registro y monitoreo bien configurado puede aportar visibilidad y trazabilidad a los incidentes.
 
-7.2 Objetivos
+### 7.2 Objetivos
 
 Documentar el uso detallado del dashboard de Kibana para el análisis forense de incidentes.
 
@@ -14,7 +14,7 @@ Detectar patrones comunes en los ataques simulados.
 
 Evaluar la utilidad del honeypot para recopilar inteligencia de amenazas.
 
-7.3 Metodología de análisis
+### 7.3 Metodología de análisis
 
 Para lograr una visión clara de cada incidente, se aplicó una metodología basada en las siguientes fases:
 
@@ -40,7 +40,7 @@ Extracción de información técnica: Se documentaron logs específicos, identif
 
 Captura de evidencias: Se tomaron capturas de pantalla para ilustrar las fases del ataque y las respuestas generadas por el sistema.
 
-7.4 Visualizaciones utilizadas
+### 7.4 Visualizaciones utilizadas
 
 A continuación se presentan las visualizaciones clave empleadas durante el análisis, disponibles en el dashboard principal de T-Pot:
 
@@ -72,7 +72,7 @@ GeoIP Map
 
 Mapa geográfico de los orígenes de los ataques en tiempo real.
 
-7.5 Análisis por tipo de ataque
+### 7.5 Análisis por tipo de ataque
 
 7.5.1 Escaneo de puertos
 
@@ -116,7 +116,7 @@ Honeypot involucrado: Glastopf y Conpot.
 
 Captura: img/07_http_requests.png
 
-7.6 Interpretación de resultados
+### 7.6 Interpretación de resultados
 
 El análisis realizado demuestra que:
 
@@ -130,7 +130,7 @@ El uso de honeypots con diferentes perfiles (SSH, HTTP, SCADA, etc.) permite una
 
 Las capturas de credenciales suponen una fuente valiosa de inteligencia, sobre todo para comprender cómo se comportan los scripts automatizados.
 
-7.7 Conclusiones parciales
+### 7.7 Conclusiones parciales
 
 A modo de cierre de este análisis, se puede concluir que:
 
