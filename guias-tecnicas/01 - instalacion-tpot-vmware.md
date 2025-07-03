@@ -39,15 +39,19 @@
 
 ```bash
 sudo apt update && sudo apt upgrade -y
+```
 
 ## Paso 4: Descargar y ejecutar el instalador de T-Pot
 
+```bash
 cd /opt
 sudo apt install git -y
 sudo git clone https://github.com/telekom-security/tpotce
 cd tpotce/iso/installer/
 sudo chmod +x install.sh
 sudo ./install.sh
+```
+
 
 ⚠️ Durante la instalación, selecciona el tipo de honeypots que deseas incluir. Recomendado: "Standard Installation".
 
@@ -55,17 +59,20 @@ sudo ./install.sh
 
 Una vez finalizada la instalación:
 
-Reinicia el sistema con sudo reboot.
+Reinicia el sistema con:
+```bash
+sudo reboot.
+```
 
-Accede vía navegador a https://<IP-DE-TU-MAQUINA>:64297.
+Accede vía navegador a `https://<IP-DE-TU-MAQUINA>:64297.`
 
 Usuario y contraseña: los que definiste durante la instalación (WEB_USER).
 
 
 NOTAS FINALES
 -------------
-Puede tardar bastante la instalación (~1h), ya que descarga muchas imágenes de Docker.
+1. Puede tardar bastante la instalación (~1h), ya que descarga muchas imágenes de Docker.
 
-Asegúrate de abrir los puertos necesarios si estás en una red NAT.
+2. Asegúrate de abrir los puertos necesarios si estás en una red NAT.
 
-Si algo falla, revisa los logs con journalctl -xe o consulta los servicios con sudo docker ps.
+3. Si algo falla, revisa los logs con journalctl -xe o consulta los servicios con sudo docker ps.
