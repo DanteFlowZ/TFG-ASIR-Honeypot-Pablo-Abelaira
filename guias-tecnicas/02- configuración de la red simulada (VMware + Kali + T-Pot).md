@@ -47,7 +47,8 @@ Ya deberías tener:
 Edita el archivo de configuración de red:
 ```bash
 sudo nano /etc/netplan/00-installer-config.yaml
-
+```
+```00.installer-config.yaml
 network:
   version: 2
   ethernets:
@@ -58,12 +59,17 @@ network:
       gateway4: 192.168.159.1
       nameservers:
         addresses: [8.8.8.8, 1.1.1.1]
+```
 
+```bash
 sudo netplan apply
+```
+---
 
 EN KALI LINUX
 
 En la terminal de comandos pondremos los siguientes comandos
+```bash
 auto eth0
 iface eth0 inet static
   address 192.168.159.140
@@ -71,14 +77,18 @@ iface eth0 inet static
   gateway 192.168.159.1
 
 sudo systemctl restart networking
+```
 
 ## Paso 4: comprobamos conectividad
 
 Desde Kali:
-ping 192.168.159.130
-
+```bash
+ping 192.168.159.130 (ip T-pot)
+```
 Desde el T-pot
-ping 192.168.159.140
+```bash
+ping 192.168.159.140 (ip maquina Atacante)
+```
 
 🎯 Resultado
 Una red cerrada y funcional entre Kali y T-Pot que te permite:
