@@ -91,15 +91,15 @@ ping 192.168.159.140 (ip maquina Atacante)
 ```
 
 🎯 Resultado
-Una red cerrada y funcional entre Kali y T-Pot que te permite:
+- Una red cerrada y funcional entre Kali y T-Pot que te permite:
 
-Simular ataques reales.
+- Simular ataques reales.
 
-Observar tráfico y alertas en T-Pot.
+- Observar tráfico y alertas en T-Pot.
 
-Acceder a servicios vía web si configuras el firewall correctamente.
+- Acceder a servicios vía web si configuras el firewall correctamente.
 
 🔐 Consejos de seguridad
-Esta red no tiene acceso a internet si usas solo “Host-only”.
+- Esta red no tiene acceso a internet si usas solo “Host-only”.
 
-Si necesitas acceso desde tu navegador para ver Kibana, abre puertos específicos o usa NGINX reverse proxy con autenticación básica.
+- Si necesitas acceso desde tu navegador para ver Kibana, abre puertos específicos o usa NGINX reverse proxy con autenticación básica.
